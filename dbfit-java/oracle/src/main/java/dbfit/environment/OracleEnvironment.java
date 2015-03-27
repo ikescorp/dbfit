@@ -276,7 +276,7 @@ public class OracleEnvironment extends AbstractDbEnvironment {
                         + "( select ov from "
                         + " ( select overload ov, count(1) cnt from all_arguments "
                         + " where data_level = 0 and  owner=? and package_name=? and object_name=? group by overload )"
-                        + " where cnt=?";
+                        + " where cnt=? )";
                 string[] newQualifiers = qualifiers[2].split("-");
                 qualifiers[2] = newQualifiers[0];
                 qualifiers[3] = qualifiers[0];
