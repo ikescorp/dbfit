@@ -269,7 +269,21 @@ public class OracleEnvironment extends AbstractDbEnvironment {
         String qry = "select " + cols
                 + "  from all_arguments where data_level=0 and ";
         if (qualifiers.length == 3) {
-            qry += " owner=? and package_name=? and object_name=? ";
+            if (qualifiers[2].indexOf("-") != -1 ) {
+                qry += " owner=? and package_name=? and object_name=? ";
+            } else {
+                qry += " owner=? and package_name=? and object_name=? and overload = "
+                        + "( select ov from "
+                        + " ( select overload ov, count(1) cnt from all_arguments "
+                        + " where data_level = 0 and  owner=? and package_name=? and object_name=? group by overload )"
+                        + " where cnt=? )";
+                String[] newQualifiers = qualifiers[2].split("-");
+                qualifiers[2] = newQualifiers[0];
+                qualifiers[3] = qualifiers[0];
+                qualifiers[4] = qualifiers[1];
+                qualifiers[5] = qualifiers[2];
+                qualifiers[6] = newQualifiers[1];
+            }
         } else if (qualifiers.length == 2) {
             qry += " ((owner=? and package_name is null and object_name=?) or "
                     + " (owner=user and package_name=? and object_name=?))";
