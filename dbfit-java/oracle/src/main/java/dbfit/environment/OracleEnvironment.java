@@ -278,11 +278,16 @@ public class OracleEnvironment extends AbstractDbEnvironment {
                         + " where data_level = 0 and  owner=? and package_name=? and object_name=? group by overload )"
                         + " where cnt=? )";
                 String[] newQualifiers = qualifiers[2].split("-");
-                qualifiers[2] = newQualifiers[0];
-                qualifiers[3] = qualifiers[0];
-                qualifiers[4] = qualifiers[1];
-                qualifiers[5] = qualifiers[2];
-                qualifiers[6] = newQualifiers[1];
+                String[] newQualifiers1 = new String[7];
+                newQualifiers1[0] = qualifiers[0];
+                newQualifiers1[1] = qualifiers[1];
+                newQualifiers1[2] = newQualifiers[0];
+                newQualifiers1[3] = qualifiers[0];
+                newQualifiers1[4] = qualifiers[1];
+                newQualifiers1[5] = newQualifiers[0];
+                newQualifiers1[6] = newQualifiers[1];
+                qualifiers = newQualifiers1;
+
             }
         } else if (qualifiers.length == 2) {
             qry += " ((owner=? and package_name is null and object_name=?) or "
