@@ -16,7 +16,7 @@ after_success:
   - "./gradlew bundle"
 
 deploy:
-  provider: releases
+  #provider: releases
   api-key: "5293f9c2571280f8f8040d74ced163982e925a09"
   file:
     - "zips/dbfit-complete-3.1.0.zip"
