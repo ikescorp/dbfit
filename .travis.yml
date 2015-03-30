@@ -14,7 +14,7 @@ jdk:
 #  - oraclejdk8
 after_success:
   - "./gradlew bundle"
-
+#
 #deploy:
 #  #provider: releases
 #  api-key: "5293f9c2571280f8f8040d74ced163982e925a09"
