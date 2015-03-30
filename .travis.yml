@@ -15,12 +15,12 @@ jdk:
 after_success:
   - "./gradlew bundle"
 
-deploy:
-  #provider: releases
-  api-key: "5293f9c2571280f8f8040d74ced163982e925a09"
-  file:
-    - "zips/dbfit-complete-3.1.0.zip"
-  skip_cleanup: true
+#deploy:
+#  #provider: releases
+#  api-key: "5293f9c2571280f8f8040d74ced163982e925a09"
+#  file:
+#    - "zips/dbfit-complete-3.1.0.zip"
+#  skip_cleanup: true
 # the next line is a workaround for https://github.com/travis-ci/travis-artifacts/issues/23
   - "gem install --version 0.8.9 faraday"
   - "gem install travis-artifacts"
