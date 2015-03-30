@@ -14,14 +14,13 @@ jdk:
 #  - oraclejdk8
 after_success:
   - "./gradlew bundle"
-#
-#deploy:
-#  #provider: releases
-#  api-key: "5293f9c2571280f8f8040d74ced163982e925a09"
-#  file:
-#    - "zips/dbfit-complete-3.1.0.zip"
-#  skip_cleanup: true
+
+deploy:
+  provider: heroku
+  api_key: 0bea9cc7-8cad-41c1-a1b1-6127e3f74a3d
+  app:
+    master: dbfit1
 # the next line is a workaround for https://github.com/travis-ci/travis-artifacts/issues/23
-  - "gem install --version 0.8.9 faraday"
-  - "gem install travis-artifacts"
-  - "travis-artifacts upload --path zips --target-path artifacts/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID"
+#  - "gem install --version 0.8.9 faraday"
+#  - "gem install travis-artifacts"
+#  - "travis-artifacts upload --path zips --target-path artifacts/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID"
