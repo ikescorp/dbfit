@@ -166,6 +166,8 @@ task starthere(type: Exec, dependsOn: [copyLocal, copyExtraLibs, copyConnections
 
 task fastbuild(dependsOn: [':dbfit-java:core:check', ':dbfit-java:derby:check'])
 
+task stage(dependsOn: [bundle])
+
 def onWindows() {
     System.properties['os.name'].toLowerCase().contains('windows')
 }
